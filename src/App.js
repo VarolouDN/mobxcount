@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import counterStore from "./store/counter-store";
+import {observer} from "mobx-react-lite";
+import CounterStore from "./store/counter-store";
+
+
+const App =observer(() =>{
+
+       let {increment,decrement,count}=counterStore
+   // increment=increment.bind(CounterStore)
+   // decrement=decrement.bind(CounterStore)
+    console.log(counterStore)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+         <button onClick={()=>increment.bind(CounterStore)(1)} >+</button>
+         <p>{count}</p>
+          <button onClick={()=>decrement.bind(CounterStore)(1)}>-</button>
     </div>
-  );
-}
+
+)
+})
 
 export default App;
